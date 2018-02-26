@@ -1,5 +1,12 @@
 // File: game.cxx
 
+/// This is the game.cc file
+
+/// This file provides the implementation for overarching functions to
+/// how the game operates. Functions in this file help start the game,
+/// depermine who won, who's turn to play it is, display messages to the
+/// terminal, etc.
+
 #include <cassert>    // Provides assert
 #include <climits>    // Provides INT_MAX and INT_MIN
 #include <iostream>   // Provides cin, cout
@@ -160,6 +167,10 @@ void game::make_computer_move( )
 	// Make the best move.
 	make_move(best_move);
 }
+
+/**
+* this is a test comment
+*/
 
 void game::make_human_move( ) {
 	string move;
