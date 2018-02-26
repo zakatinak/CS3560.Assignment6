@@ -1,9 +1,10 @@
-///This is the game .h file
-///This file is used to create virtual functions for the Othello project
-///These comments are used to help the Doxygen documentation do its job
-
-
-
+/**
+* This is the header file game.h written by Walter Savitch. It holds the 
+* declaration for the game class. It provides functions that allow for the game AI
+* to be written in the implementation file, game.cc. Its constructor allows for a
+* new game of Othello to start with 0 moves, with the human player moving first and the
+* computer moving second.
+*/
 // File: game.h (part of the namespace main_savitch_14)
 
 
