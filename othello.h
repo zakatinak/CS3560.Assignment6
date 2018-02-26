@@ -29,6 +29,7 @@ public:
 	int evaluate()const;
 	bool is_game_over()const;
 	bool is_legal(const string& move)const;
+	/// \param move is the potential legal move the user/bot can make
 	void make_move(const string& move);
 	void restart();
 	void make_skips();
