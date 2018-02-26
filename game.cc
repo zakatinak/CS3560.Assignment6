@@ -28,6 +28,7 @@ game::who game::play( )
 /// The play function plays one round of the game, with the human 
 /// player moving first and the computer second. The return value 
 /// is the winner of the game (or NEUTRAL for a tie).
+/// @return HUMAN a game::who datatype
 {
 	restart( );
 
@@ -55,15 +56,17 @@ game::who game::play( )
 void game::display_message(const string& message) const
 /// The display_message functions takes a string as an argunment
 /// and displays that string in the terminal.
+/// @param message[in] The message to be displayed in the terminal
 {
 	cout << message;
 }
 
 string game::get_user_move( ) const
-///This is the get_user_move function
-//This function determines whose move it is and informs the player
-///when it is their turn. It also informs the player what to press
-///when they can't make a move.
+/// This is the get_user_move function
+/// This function determines whose move it is and informs the player
+/// when it is their turn. It also informs the player what to press
+/// when they can't make a move.
+/// @return answer a string	
 {
 	string answer;
 
@@ -75,6 +78,7 @@ string game::get_user_move( ) const
 
 /**
 * The Winning function retuns who is winning the game at the time of call.
+* @return last_mover() 
 */
 game::who game::winning()const {
 
