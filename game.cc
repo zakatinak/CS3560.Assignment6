@@ -1,5 +1,4 @@
 // File: game.cxx
-//changin line 2 of this file for testing pourpose
 
 /// This is the game.cc file
 
@@ -61,6 +60,10 @@ void game::display_message(const string& message) const
 }
 
 string game::get_user_move( ) const
+///This is the get_user_move function
+//This function determines whose move it is and informs the player
+///when it is their turn. It also informs the player what to press
+///when they can't make a move.
 {
 	string answer;
 
