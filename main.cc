@@ -3,6 +3,8 @@
 // November 23, 2015
 // Project7
 
+///Main implemenation file
+
 #include "game.h"
 #include "othello.h"
 using namespace main_savitch_14;
