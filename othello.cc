@@ -52,6 +52,11 @@ void Othello::display_status()const
   cout << "\nEnter a move in the format(letter,number) (Ex: A3)" << endl;
 }
 
+/*! \fn void Othello::make_move(const string& move) 
+ *  \brief Makes a move on the Othello board corresponding to the user's move input.
+ *  \param move a string
+ *  \return returns void.
+ */
 void Othello::make_move(const string& move) {
 
   int c, r;
