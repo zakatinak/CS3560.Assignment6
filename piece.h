@@ -1,3 +1,10 @@
+/**
+	This class is written to keep track of the pieces in the othello game. The class has functions
+	to determine the color of a piece. It aslo includes functions to flip a piece and to set it to 
+	specific color directly. 
+
+*/
+
 // Brock Ferrell
 // CS2401
 // November 23, 2015
