@@ -87,20 +87,22 @@ game::who game::winning()const {
 //*************************************************************************
 // PRIVATE FUNCTIONS (these are the same for every game)
 
+/** Evaluate a board position with lookahead.
+ * --int look_aheads:  How deep the lookahead should go to evaluate the move.
+ * --int beat_this: Value of another move that we're considering. If the
+ * current board position can't beat this, then cut it short.
+ * The return value is large if the position is good for the player who just
+ * moved.
+*/
 int game::eval_with_lookahead(int look_ahead, int beat_this)
-// Evaluate a board position with lookahead.
-// --int look_aheads:  How deep the lookahead should go to evaluate the move.
-// --int beat_this: Value of another move that we're considering. If the
-// current board position can't beat this, then cut it short.
-// The return value is large if the position is good for the player who just
-// moved.
-{
-	queue<string> moves;   // All possible opponent moves
-	int value;             // Value of a board position after opponent moves
-	int best_value;        // Evaluation of best opponent move
-	game* future;          // Pointer to a future version of this game
 
-	// Base case:
+{
+	queue<string> moves;   /// All possible opponent moves
+	int value;             /// Value of a board position after opponent moves
+	int best_value;        /// Evaluation of best opponent move
+	game* future;          /// Pointer to a future version of this game
+
+	/// Base case:
 	if (look_ahead == 0 || is_game_over( ))
 	{
 		if (last_mover( ) == COMPUTER)
@@ -109,11 +111,11 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 			return -evaluate( );
 	}
 
-	// Recursive case:
-	// The level is above 0, so try all possible opponent moves. Keep the
-	// value of the best of these moves from the opponent's perspective.
+	/// Recursive case:
+	/// The level is above 0, so try all possible opponent moves. Keep the
+	/// value of the best of these moves from the opponent's perspective.
 	compute_moves(moves);
-	// assert(!moves.empty( ));
+	/// assert(!moves.empty( ));
 	best_value = INT_MIN;
 	while (!moves.empty( ))
 	{
@@ -124,14 +126,14 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 		if (value > best_value)
 		{
 			if (-value <= beat_this)
-				return INT_MIN + 1; // Alpha-beta pruning
+				return INT_MIN + 1; /// Alpha-beta pruning
 			best_value = value;
 		}
 		moves.pop( );
 	}
 
-	// The value was calculated from the opponent's perspective.
-	// The answer we return should be from player's perspective, so multiply times -1:
+	/// The value was calculated from the opponent's perspective.
+	/// The answer we return should be from player's perspective, so multiply times -1:
 	return -best_value;
 }
 
