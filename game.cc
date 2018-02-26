@@ -25,9 +25,9 @@ namespace main_savitch_14
 // PUBLIC MEMBER FUNCTIONS
 
 game::who game::play( )
-/// The play function plays one round of the game, with the human 
-/// player moving first and the computer second. The return value 
-/// is the winner of the game (or NEUTRAL for a tie).
+// The play function should not be overridden. It plays one round of the
+// game, with the human player moving first and the computer second.
+// The return value is the winner of the game (or NEUTRAL for a tie).
 {
 	restart( );
 
@@ -53,8 +53,6 @@ game::who game::play( )
 // OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
 
 void game::display_message(const string& message) const
-/// The display_message functions takes a string as an argunment
-/// and displays that string in the terminal.
 {
 	cout << message;
 }
@@ -69,9 +67,6 @@ string game::get_user_move( ) const
 	return answer;
 }
 
-/**
-	The Winning function retuns who is winning the game at the time of call.
-*/
 game::who game::winning()const {
 
 	int value = evaluate();
@@ -89,22 +84,20 @@ game::who game::winning()const {
 //*************************************************************************
 // PRIVATE FUNCTIONS (these are the same for every game)
 
-/** Evaluate a board position with lookahead.
- * --int look_aheads:  How deep the lookahead should go to evaluate the move.
- * --int beat_this: Value of another move that we're considering. If the
- * current board position can't beat this, then cut it short.
- * The return value is large if the position is good for the player who just
- * moved.
-*/
 int game::eval_with_lookahead(int look_ahead, int beat_this)
-
+// Evaluate a board position with lookahead.
+// --int look_aheads:  How deep the lookahead should go to evaluate the move.
+// --int beat_this: Value of another move that we're considering. If the
+// current board position can't beat this, then cut it short.
+// The return value is large if the position is good for the player who just
+// moved.
 {
-	queue<string> moves;   /// All possible opponent moves
-	int value;             /// Value of a board position after opponent moves
-	int best_value;        /// Evaluation of best opponent move
-	game* future;          /// Pointer to a future version of this game
+	queue<string> moves;   // All possible opponent moves
+	int value;             // Value of a board position after opponent moves
+	int best_value;        // Evaluation of best opponent move
+	game* future;          // Pointer to a future version of this game
 
-	/// Base case:
+	// Base case:
 	if (look_ahead == 0 || is_game_over( ))
 	{
 		if (last_mover( ) == COMPUTER)
@@ -113,11 +106,11 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 			return -evaluate( );
 	}
 
-	/// Recursive case:
-	/// The level is above 0, so try all possible opponent moves. Keep the
-	/// value of the best of these moves from the opponent's perspective.
+	// Recursive case:
+	// The level is above 0, so try all possible opponent moves. Keep the
+	// value of the best of these moves from the opponent's perspective.
 	compute_moves(moves);
-	/// assert(!moves.empty( ));
+	// assert(!moves.empty( ));
 	best_value = INT_MIN;
 	while (!moves.empty( ))
 	{
@@ -128,17 +121,22 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 		if (value > best_value)
 		{
 			if (-value <= beat_this)
-				return INT_MIN + 1; /// Alpha-beta pruning
+				return INT_MIN + 1; // Alpha-beta pruning
 			best_value = value;
 		}
 		moves.pop( );
 	}
 
-	/// The value was calculated from the opponent's perspective.
-	/// The answer we return should be from player's perspective, so multiply times -1:
+	// The value was calculated from the opponent's perspective.
+	// The answer we return should be from player's perspective, so multiply times -1:
 	return -best_value;
 }
 
+///
+/// make_computer_move() calls compute_moves(), clone(), make_move(), and eval_with_lookahead(). make_computer_move() computes all legal moves that
+/// the computer can make. It then chooses the best of all possible moves by calling eval_with_lookahead(). It then calls make_move() with
+/// the best move computed. It returns void.
+///
 void game::make_computer_move( )
 {
 	queue<string> moves;
@@ -172,10 +170,12 @@ void game::make_computer_move( )
 	make_move(best_move);
 }
 
-/**
-* this is a test comment
-*/
-
+///
+/// make_human_move() calls get_user_move(), is_legal() and make_move(). It uses get_user_move() to read in a string from user input.
+/// If this string does not correspond to a legal move on the board, make_human_move() will call get_user_move() until
+/// a legal move is made. The function then calls make_move() with the string "move", then returns void.
+///
+	
 void game::make_human_move( ) {
 	string move;
 
