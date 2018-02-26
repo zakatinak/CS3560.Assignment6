@@ -1,3 +1,9 @@
+///This is the game .h file
+///This file is used to create virtual functions for the Othello project
+///These comments are used to help the Doxygen documentation do its job
+
+
+
 // File: game.h (part of the namespace main_savitch_14)
 
 
