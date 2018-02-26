@@ -1,3 +1,7 @@
+///This is the Othello cc file. 
+///The purpose of this file is to create the rules of the game, the possible moves, and construct the board.
+///I'm writing this comment so that Doxygen documentation can read this.
+
 // Brock Ferrell
 // CS2401
 // November 23, 2015
