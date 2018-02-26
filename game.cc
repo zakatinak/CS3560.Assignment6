@@ -25,7 +25,7 @@ namespace main_savitch_14
 // PUBLIC MEMBER FUNCTIONS
 
 game::who game::play( )
-/// The play functionplays one round of the game, with the human 
+/// The play function plays one round of the game, with the human 
 /// player moving first and the computer second. The return value 
 /// is the winner of the game (or NEUTRAL for a tie).
 {
@@ -53,6 +53,8 @@ game::who game::play( )
 // OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
 
 void game::display_message(const string& message) const
+/// The display_message functions takes a string as an argunment
+/// and displays that string in the terminal.
 {
 	cout << message;
 }
