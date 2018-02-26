@@ -1,7 +1,7 @@
 DEP=colors.h game.h othello.h piece.h
 OBJ=othello.cc game.cc main.cc
 
-all:build archive
+all:build archive doc
 
 build:game
 
@@ -18,7 +18,10 @@ othello.o: othello.cc $(DEP)
 	g++ -c othello.cc
 
 clean:
-	rm -f *.o core *.core game Othello.tar.gz
+	rm -f -r  *.o core *.core game Othello.tar.gz configfile latex html
 
 archive: $(DEP) $(OBJ) makefile
 	tar cvzf Othello.tar.gz $^
+doc:
+	doxygen -g configfile
+	doxygen configfile
