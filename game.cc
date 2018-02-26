@@ -25,7 +25,8 @@ namespace main_savitch_14
 // PUBLIC MEMBER FUNCTIONS
 
 game::who game::play( )
-/// The play function plays one round of the game, with the human 
+/// \fn game::who game::play()
+/// \brief The play function plays one round of the game, with the human 
 /// player moving first and the computer second. The return value 
 /// is the winner of the game (or NEUTRAL for a tie).
 /// @return HUMAN a game::who datatype
@@ -54,7 +55,8 @@ game::who game::play( )
 // OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
 
 void game::display_message(const string& message) const
-/// The display_message functions takes a string as an argunment
+/// \fn void game::display_message(const string& message) const
+/// \brief The display_message functions takes a string as an argunment
 /// and displays that string in the terminal.
 /// @param message[in] The message to be displayed in the terminal
 {
@@ -62,8 +64,8 @@ void game::display_message(const string& message) const
 }
 
 string game::get_user_move( ) const
-/// This is the get_user_move function
-/// This function determines whose move it is and informs the player
+/// \fn string game::get_user_move() const
+/// \brief This function determines whose move it is and informs the player
 /// when it is their turn. It also informs the player what to press
 /// when they can't make a move.
 /// @return answer a string	
@@ -99,12 +101,14 @@ game::who game::winning()const {
 //*************************************************************************
 // PRIVATE FUNCTIONS (these are the same for every game)
 
-/** Evaluate a board position with lookahead.
-* --int look_aheads:  How deep the lookahead should go to evaluate the move.
-* --int beat_this: Value of another move that we're considering. If the
+/**
+* \fn int game::eval_with_lookahead(int look_ahead, int beat_this)
+* \briefEvaluate a board position with lookahead.
+* \param look_ahead How deep the lookahead should go to evaluate the move.
+* \param beat_this Value of another move that we're considering. If the
 * current board position can't beat this, then cut it short.
-* The return value is large if the position is good for the player who just
-* moved.
+* \return value is large if the position is good for the player who just
+* moved. returns an int.
 */
 int game::eval_with_lookahead(int look_ahead, int beat_this)
 {
@@ -149,9 +153,11 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 }
 
 ///
-/// make_computer_move() calls compute_moves(), clone(), make_move(), and eval_with_lookahead(). make_computer_move() computes all legal moves that
+/// \fn void game::make_computer_move()
+/// \brief make_computer_move() calls compute_moves(), clone(), make_move(), and eval_with_lookahead(). make_computer_move() computes all legal moves that
 /// the computer can make. It then chooses the best of all possible moves by calling eval_with_lookahead(). It then calls make_move() with
 /// the best move computed. It returns void.
+/// \return returns void
 ///
 void game::make_computer_move( )
 {
@@ -187,9 +193,11 @@ void game::make_computer_move( )
 }
 
 ///
-/// make_human_move() calls get_user_move(), is_legal() and make_move(). It uses get_user_move() to read in a string from user input.
-/// If this string does not correspond to a legal move on the board, make_human_move() will call get_user_move() until
+/// \fn void game::make_human_move()
+/// \brief make_human_move() calls get_user_move(), is_legal() and make_move(). It uses get_user_move()
+/// to read in a string from user input. If this string does not correspond to a legal move on the board, make_human_move() will call get_user_move() until
 /// a legal move is made. The function then calls make_move() with the string "move", then returns void.
+/// \return returns void
 ///
 	
 void game::make_human_move( ) {
