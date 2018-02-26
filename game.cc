@@ -78,7 +78,9 @@ string game::get_user_move( ) const
 
 /**
 * The Winning function retuns who is winning the game at the time of call.
-* @return last_mover() 
+* @return last_mover() whether it's the computer's turn to move
+* @return next_mover() whether it's the human's turn to move
+* @return NEUTRAL whether there are no more moves to be made
 */
 game::who game::winning()const {
 
