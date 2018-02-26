@@ -5,6 +5,7 @@
 * new game of Othello to start with 0 moves, with the human player moving first and the
 * computer moving second.
 */
+
 // File: game.h (part of the namespace main_savitch_14)
 
 
