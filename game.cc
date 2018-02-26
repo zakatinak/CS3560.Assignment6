@@ -165,6 +165,10 @@ void game::make_computer_move( )
 	make_move(best_move);
 }
 
+/**
+* this is a test comment
+*/
+
 void game::make_human_move( ) {
 	string move;
 
