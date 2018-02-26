@@ -19,6 +19,7 @@ public:
 	piece() {theColor = blank;}
 
 	void flip()
+	/// \return white or black are the two different variables flip function will return.
 	{
 		if (theColor == white) {
 			theColor = black;
