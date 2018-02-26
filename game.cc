@@ -60,6 +60,9 @@ string game::get_user_move( ) const
 	return answer;
 }
 
+/**
+	The Winning function retuns who is winning the game at the time of call.
+*/
 game::who game::winning()const {
 
 	int value = evaluate();
